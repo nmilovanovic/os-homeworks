@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rest1
+  name: rest1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rest1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: rest1
+    spec:
+      containers:
+      - image: milovanovicsnikola/s1:v2
+        name: rest1
+        env:
+        - name: QUEUE_STRING
+          value: "amqp://guest:guest@10.152.183.68:5672/"
+        - name: REDIS_STRING
+          value: "10.152.183.130:6379"
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}
