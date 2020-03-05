@@ -1,0 +1,8 @@
+docker run -it -p 8080:8080 -v /home/nikola/Desktop/micropython:/scripts/ mrooding/micropython-docker /scripts/main.py
+docker run -it -p 8080:8080 -v /home/nikola/Desktop/micropython:/scripts/ mitchins/micropython-linux /bin/bash
+
+>>> import upip
+>>> upip.install('micropython-bar')
+
+micropython -m upip install micropython-pystone
+
